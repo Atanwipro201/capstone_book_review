@@ -1,0 +1,46 @@
+h1 {
+  font-family: "Libertinus Serif", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+hr{
+    color: blue;
+     width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.bookcover{
+    height: 200px;
+   
+}
+.hidden{
+    visibility: hidden;
+    height: 0px;
+}
+.btn-cont{
+    display:flex;
+    flex-direction:row;
+}
+p {
+  font-family: "Libertinus Serif", serif;
+  font-weight: 300;
+  font-style: normal;
+ 
+}
+
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  font-variation-settings:"wdth" 100;
+    color:rgb(0, 0, 100);
+}
+@media only screen and (max-width: 600px) {
+    body{
+        text-align: center;
+    }
+    .btn-cont{
+        align-items: center;
+    }
+}  

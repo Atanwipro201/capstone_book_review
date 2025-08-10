@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book reviews</title>
+    <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <div class="container" bis_skin_checked="1">
+        <header
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <div class="col-md-3 mb-2 mb-md-0" bis_skin_checked="1">
+                <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                    <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                </a>
+            </div>
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <h1>
+                    <%= listTitle %>
+                </h1>
+            </ul>
+            <div class="col-md-3 text-end" bis_skin_checked="1">
+                <a href="/add"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
+                    </svg></a>
+            </div>
+        </header>
+    </div>
+    <div class="allBooks">
+
+        <% listItems.forEach((item)=>{%>
+
+            <div class="row featurette edit hidden" bis_skin_checked="1" id="edit<%= item.id %>">
+                <form action="/edit" method="post">
+                    <div class="col-md-7" bis_skin_checked="1">
+                        <input type="hidden" name="updatedId" value="<%= item.id %>">
+                        <input id="name<%=item.id%>" type="text" name="updatedName" value="<%= item.name %>"
+                            autocomplete="off">
+                        <input id="review<%=item.id%>" type="text" name="updatedReview" value="<%= item.review %>"
+                            autocomplete="off">
+                    </div>
+                    <div class="col-md-5" bis_skin_checked="1"><img
+                            src='<%= `https://covers.openlibrary.org/b/id/${item.isbn}-M.jpg` %>' alt=""
+                            class="bookcover"></div>
+
+                    <input type="hidden" id="postId" name="id" value="<%= item.id %>" />
+                    <button type="submit" class=" btn btn-primary m-2">Done</button>
+                </form>
+
+            </div>
+            <div class="row featurette noedit" bis_skin_checked="1" id="noedit<%= item.id %>">
+                <div class="col-md-7" bis_skin_checked="1">
+                    <h2 class="featurette-heading fw-normal lh-1 ms-5">
+                        <%= item.name %>
+                    </h2>
+                    <p class="lead ms-5">
+                        <%= item.review %>
+                    </p>
+                </div>
+                <div class="col-md-5" bis_skin_checked="1"><img
+                        src='<%= `https://covers.openlibrary.org/b/id/${item.isbn}-M.jpg` %>' alt="" class="bookcover">
+                </div>
+                <div class="btn-cont">
+                    <form action="/delete" method="post">
+                        <input type="hidden" id="postId" name="id" value="<%= item.id %>" />
+                        <button type="submit" class="btn btn-danger m-2 ms-5">Delete</button>
+                    </form>
+                    <button onclick="hide('<%= item.id %>')" class="btn btn-secondary m-2">Edit</button>
+                </div>
+
+
+
+            </div>
+            <hr />
+
+            <% }); %>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="/script.js" defer></script>
+</body>
+
+</html>

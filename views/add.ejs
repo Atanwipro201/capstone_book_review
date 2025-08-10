@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add a book</title>
+</head>
+<body>
+    
+    <form action="/get-book" method="post">
+        <p>
+          <label for="name">Book Name:</label>
+          <input type="text" id="name" name="name" />
+        </p>
+        <p>
+          <label for="mail">category:</label>
+          <input type="text" id="mail" name="book_type" />
+        </p>
+        <p>
+          <label for="msg">review:</label>
+          <textarea id="msg" name="user_review"></textarea>
+        </p>
+        <p class="button">
+            <button type="submit">Send your message</button>
+          </p>
+      </form>
+      <a href="/">back</a>
+      
+</body>
+</html>
